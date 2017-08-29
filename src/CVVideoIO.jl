@@ -20,10 +20,10 @@ cxx"""
 
 include("const.jl")
 
-typealias cvVideoCapture cxxt"cv::VideoCapture"
+const cvVideoCapture = cxxt"cv::VideoCapture"
 cvVideoCapture(idx::Int) = icxx"return cv::VideoCapture($idx);"
 
-typealias VideoCapture cvVideoCapture
+const VideoCapture = cvVideoCapture
 
 function Base.read!(cap::VideoCapture, img::Mat{UInt8})
     icxx"$cap.read($(img.handle));"
